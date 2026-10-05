@@ -53,7 +53,7 @@ module "eks" {
       min_size       = 1
       max_size       = 2
       desired_size   = 1
-      instance_types = ["t3a.medium", "t3.medium"]
+      instance_types = ["t3.small"]
       capacity_type  = "SPOT"
       subnet_ids     = module.vpc.public_subnets
     }
@@ -65,7 +65,7 @@ module "eks" {
 resource "helm_release" "test_namespace_baseline" {
   name             = "test-namespace-baseline"
   chart            = "${path.module}/charts/namespace-baseline"
-  namespace        = "workload-test"
+  namespace        = "workload-test-2"
   create_namespace = true
   wait             = false
   values = [
