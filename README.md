@@ -3,7 +3,6 @@
 This repository provisions a production-style AWS landing zone and an Amazon EKS cluster with a baseline namespace chart for workload governance.
 
 ## Included
-
 - VPC with public and private subnets
 - NAT gateway setup
 - EKS cluster with managed node group
@@ -84,8 +83,6 @@ kubectl get all,resourcequota,limitrange,role,rolebinding -n workload-test
 
 ## Teardown
 
-```bash
-cd environments/dev
 terraform destroy -auto-approve
 ```
 
