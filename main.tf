@@ -53,15 +53,14 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    general = {
-      name           = "system-nodes"
-      instance_types = ["m5.large"]
-
-      min_size     = 2
-      max_size     = 5
-      desired_size = 2
-
-      subnet_ids = module.vpc.private_subnets
+    testing_nodes = {
+      name           = "testing-nodes"
+      min_size       = 1
+      max_size       = 2
+      desired_size   = 1
+      instance_types = ["t3a.medium", "t3.medium"]
+      capacity_type  = "SPOT"
+      subnet_ids     = module.vpc.private_subnets
     }
   }
 
@@ -73,10 +72,9 @@ resource "helm_release" "test_namespace_baseline" {
   chart            = "${path.module}/charts/namespace-baseline"
   namespace        = "workload-test"
   create_namespace = true
-
+  wait             = false
   values = [
     file("${path.module}/charts/namespace-baseline/values.yaml")
   ]
-
   depends_on = [module.eks]
 }
