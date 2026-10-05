@@ -1,5 +1,6 @@
 # Terraform working directory and downloaded modules
 .terraform/
+.terraform.lock.hcl
 
 # State files
 *.tfstate
