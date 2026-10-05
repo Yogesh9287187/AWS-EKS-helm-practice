@@ -25,7 +25,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   type        = string
   description = "Kubernetes control plane version"
-  default     = "1.30"
+  default     = "1.37.1"
 }
 variable "aws_profile" {
   type        = string
