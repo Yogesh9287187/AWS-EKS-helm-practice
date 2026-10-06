@@ -1,6 +1,12 @@
 terraform {
   required_version = ">= 1.5.0"
+  cloud {
+    organization = "myOrg9287187"
 
+    workspaces {
+      name = "AWS-EKS-helm-practice"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
